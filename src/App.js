@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 
+import Header from './components/Header';
+import AddButton from './components/AddButton';
+
 class App extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1>Hello World</h1>
+                <Header />
+                <AddButton />
             </React.Fragment>
         );
     }
