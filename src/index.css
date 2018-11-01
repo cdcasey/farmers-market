@@ -1,3 +1,7 @@
+html {
+    font-size: 62.5%;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -6,6 +10,7 @@ body {
         'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-size: 1.6rem;
 }
 
 code {
@@ -25,4 +30,24 @@ button {
 
 .items__price {
     text-align: right;
+}
+
+.header__right-nav {
+    position: relative;
+    margin-right: 1.5rem;
+}
+
+.header__notifier {
+    color: #fcfcfc;
+    background-color: red;
+    border-radius: 50%;
+    height: 1.75rem;
+    width: 1.75rem;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -1rem;
+    right: -1.5rem;
 }

@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class AddButton extends Component {
-    render() {
-        return <button>+</button>;
-    }
+export default function AddButton(props) {
+    return (
+        <button id={props.code} onClick={props.add} data-testid="add-button">
+            +
+        </button>
+    );
 }

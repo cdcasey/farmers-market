@@ -3,12 +3,25 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import ItemTable from './components/ItemTable';
 
+import { inventory } from './market';
+
 class App extends Component {
+    state = {
+        cart: []
+    };
+
+    addToCart(event) {
+        console.log(event.target);
+        this.setState({
+            cart: [...this.state.cart, inventory[event.target.id]]
+        });
+    }
+
     render() {
         return (
             <React.Fragment>
-                <Header />
-                <ItemTable />
+                <Header cart={this.state.cart} />
+                <ItemTable add={this.addToCart.bind(this)} />
             </React.Fragment>
         );
     }

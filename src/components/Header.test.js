@@ -4,6 +4,10 @@ import Header from './Header';
 
 afterAll(cleanup);
 
+const cart = [{ name: 'item1', price: 0 }];
+
 test('<Header />', () => {
-    const { debug } = render(<Header />);
+    const { debug, getByTestId } = render(<Header cart={cart} />);
+    expect(Number(getByTestId('num-items').textContent)).toBe(cart.length);
+    // debug();
 });
