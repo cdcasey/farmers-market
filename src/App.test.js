@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { cleanup, render } from 'react-testing-library';
 import App from './App';
-import Header from './components/Header';
 
 afterAll(cleanup);
 
@@ -15,5 +14,11 @@ it('renders without crashing', () => {
 it('<App /> should have a header', () => {
     const { debug, getByTestId } = render(<App />);
     expect(getByTestId('header-container')).toBeTruthy();
+    // debug();
+});
+
+test('<App /> should have a list of items for sale', () => {
+    const { debug, getByTestId } = render(<App />);
+    expect(getByTestId('market-items')).toBeTruthy();
     // debug();
 });
