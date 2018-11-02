@@ -13,6 +13,7 @@ export default class ItemList extends Component {
         const items = _.values(inventory).map((item) => {
             return (
                 <tr key={item.code} data-testid="item">
+                    <td>{item.code}</td>
                     <td>{item.name}</td>
                     <td className="items__price">${item.price.toFixed(2)}</td>
                     <td>
@@ -26,6 +27,7 @@ export default class ItemList extends Component {
             <table data-testid="market-items">
                 <thead>
                     <tr>
+                        <th>Product Code</th>
                         <th>Name</th>
                         <th>Price</th>
                         <th />
