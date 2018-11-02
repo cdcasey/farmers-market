@@ -33,7 +33,7 @@ class App extends Component {
     render() {
         return (
             <React.Fragment>
-                <div class="container">
+                <div className="container">
                     <Header cart={this.state.itemsInCart} />
                     <div className="container__tables">
                         <ItemTable add={this.addItemToCart.bind(this)} />
