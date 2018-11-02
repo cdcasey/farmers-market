@@ -20,13 +20,10 @@ class App extends Component {
 
     removeItemFromCart(event) {
         const { cartIndex } = event.target.dataset;
-        console.log('BEFORE', this.state.itemsInCart);
 
         const itemsInCart = this.state.itemsInCart.filter(
             (item, i) => i !== Number(cartIndex)
         );
-        // const itemsInCart = this.state.itemsInCart.splice(cartIndex, 1);
-        console.log('AFTER', itemsInCart);
 
         this.setState((state) => ({
             itemsInCart
