@@ -8,21 +8,22 @@ import { inventory } from './market';
 
 class App extends Component {
     state = {
-        cart: []
+        itemsInCart: []
     };
 
     addToCart(event) {
-        this.setState({
-            cart: [...this.state.cart, inventory[event.target.id]]
-        });
+        const { id } = event.target;
+        this.setState((state) => ({
+            itemsInCart: [...state.itemsInCart, inventory[id]]
+        }));
     }
 
     render() {
         return (
             <React.Fragment>
-                <Header cart={this.state.cart} />
+                <Header cart={this.state.itemsInCart} />
                 <ItemTable add={this.addToCart.bind(this)} />
-                <Cart cart={this.state.cart} />
+                <Cart cart={this.state.itemsInCart} />
             </React.Fragment>
         );
     }
