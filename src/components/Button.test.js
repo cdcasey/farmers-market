@@ -7,7 +7,7 @@ afterEach(cleanup);
 const onClick = jest.fn();
 
 test('<Button /> should render and click', () => {
-    const { debug, getByTestId } = render(<Button add={onClick} />);
+    const { debug, getByTestId } = render(<Button addOrRemove={onClick} />);
     const addButton = getByTestId('add-button');
 
     fireEvent.click(addButton);
