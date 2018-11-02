@@ -9,7 +9,6 @@ export default class Cart extends Component {
 
     render() {
         const { cart, removeItem } = this.props;
-        console.log(this.props);
 
         if (!cart || cart.length < 1) return <h2>Your cart is empty</h2>;
 
