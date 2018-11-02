@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { cleanup, render } from 'react-testing-library';
+import { cleanup, render, fireEvent } from 'react-testing-library';
 import App from './App';
 
-afterAll(cleanup);
+afterEach(cleanup);
 
 it('renders without crashing', () => {
     const div = document.createElement('div');
@@ -20,5 +20,17 @@ it('<App /> should have a header', () => {
 test('<App /> should have a list of items for sale', () => {
     const { debug, getByTestId } = render(<App />);
     expect(getByTestId('market-items')).toBeTruthy();
+    // debug();
+});
+
+test('<App /> should update the items in cart when a button is clicked', () => {
+    const { debug, getByTestId, getAllByTestId } = render(<App />);
+    const addButton = getAllByTestId('add-button')[0];
+    const headerNotifier = getByTestId('num-items');
+
+    expect(headerNotifier.textContent).toBe('0');
+
+    fireEvent.click(addButton);
+    expect(headerNotifier.textContent).toBe('1');
     // debug();
 });

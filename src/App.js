@@ -11,7 +11,6 @@ class App extends Component {
     };
 
     addToCart(event) {
-        console.log(event.target);
         this.setState({
             cart: [...this.state.cart, inventory[event.target.id]]
         });
