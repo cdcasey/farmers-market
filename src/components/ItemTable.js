@@ -17,12 +17,7 @@ export default class ItemList extends Component {
                     <td>{item.name}</td>
                     <td className="items__price">${item.price.toFixed(2)}</td>
                     <td>
-                        {
-                            <AddButton
-                                code={item.code}
-                                addOrRemove={this.props.add}
-                            />
-                        }
+                        {<AddButton code={item.code} add={this.props.add} />}
                     </td>
                 </tr>
             );
