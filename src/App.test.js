@@ -24,13 +24,18 @@ test('<App /> should have a list of items for sale', () => {
 });
 
 test('<App /> should update the items in cart when a button is clicked', () => {
-    const { debug, getByTestId, getAllByTestId } = render(<App />);
-    const addButton = getAllByTestId('add-button')[0];
+    const { debug, getByTestId } = render(<App />);
+    const addButton = getByTestId('add-button');
     const headerNotifier = getByTestId('num-items');
 
     expect(headerNotifier.textContent).toBe('0');
 
     fireEvent.click(addButton);
     expect(headerNotifier.textContent).toBe('1');
+
+    const removeButton = getByTestId('remove-button');
+    fireEvent.click(removeButton);
+    expect(headerNotifier.textContent).toBe('0');
+
     // debug();
 });
