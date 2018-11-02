@@ -1,13 +1,13 @@
 import React from 'react';
 import { cleanup, render, fireEvent } from 'react-testing-library';
-import Button from './Button';
+import AddButton from './AddButton';
 
 afterEach(cleanup);
 
 const onClick = jest.fn();
 
-test('<Button /> should render and click', () => {
-    const { debug, getByTestId } = render(<Button addOrRemove={onClick} />);
+test('<AddButton /> should render and click', () => {
+    const { debug, getByTestId } = render(<AddButton addOrRemove={onClick} />);
     const addButton = getByTestId('add-button');
 
     fireEvent.click(addButton);

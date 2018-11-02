@@ -7,7 +7,7 @@ export default function Button(props) {
             onClick={props.addOrRemove}
             data-testid="add-button"
         >
-            {props.operator}
+            +
         </button>
     );
 }
