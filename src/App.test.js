@@ -39,3 +39,15 @@ test('<App /> should update the items in cart when a button is clicked', () => {
 
     // debug();
 });
+
+test('<App /> should apply BOGO when two coffee items are added', () => {
+    const { debug, getByTestId, container } = render(<App />);
+    const coffeeButton = container.querySelector('#CF1');
+    fireEvent.click(coffeeButton);
+    const total = getByTestId('total');
+    expect(total.textContent).toBe('$11.23');
+    fireEvent.click(coffeeButton);
+    expect(total.textContent).toBe('$11.23');
+
+    // debug();
+});
