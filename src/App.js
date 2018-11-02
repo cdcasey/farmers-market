@@ -18,6 +18,21 @@ class App extends Component {
         }));
     }
 
+    removeItemFromCart(event) {
+        const { cartIndex } = event.target.dataset;
+        console.log('BEFORE', this.state.itemsInCart);
+
+        const itemsInCart = this.state.itemsInCart.filter(
+            (item, i) => i !== Number(cartIndex)
+        );
+        // const itemsInCart = this.state.itemsInCart.splice(cartIndex, 1);
+        console.log('AFTER', itemsInCart);
+
+        this.setState((state) => ({
+            itemsInCart
+        }));
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -25,7 +40,7 @@ class App extends Component {
                 <ItemTable add={this.addItemToCart.bind(this)} />
                 <Cart
                     cart={this.state.itemsInCart}
-                    remove={this.removeItemFromCart.bind(this)}
+                    removeItem={this.removeItemFromCart.bind(this)}
                 />
             </React.Fragment>
         );

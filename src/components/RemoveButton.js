@@ -2,7 +2,11 @@ import React from 'react';
 
 export default function RemoveButton(props) {
     return (
-        <button id={props.code} onClick={props.add} data-testid="remove-button">
+        <button
+            data-cart-index={props.cartIndex}
+            onClick={props.remove}
+            data-testid="remove-button"
+        >
             -
         </button>
     );
