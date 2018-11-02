@@ -83,3 +83,14 @@ tr.total-row td.total {
 .cart__price {
     text-align: right;
 }
+
+@media only screen and (max-width: 56.25em) {
+    .container__tables {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .cart {
+        margin-top: 3rem;
+    }
+}
