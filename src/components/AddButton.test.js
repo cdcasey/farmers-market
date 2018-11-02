@@ -1,9 +1,16 @@
 import React from 'react';
-import { cleanup, render } from 'react-testing-library';
+import { cleanup, render, fireEvent } from 'react-testing-library';
 import AddButton from './AddButton';
 
-afterAll(cleanup);
+afterEach(cleanup);
 
-test('<AddButton />', () => {
-    const { debug } = render(<AddButton />);
+const onClick = jest.fn();
+
+test('<AddButton /> should render and click', () => {
+    const { debug, getByTestId } = render(<AddButton add={onClick} />);
+    const addButton = getByTestId('add-button');
+
+    fireEvent.click(addButton);
+    expect(onClick).toHaveBeenCalledTimes(1);
+    // debug();
 });
