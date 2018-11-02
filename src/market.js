@@ -21,17 +21,36 @@ export const specials = {
 
 export function applySpecials(cart) {
     let coffee = [];
+    let oatmealAndApples = [];
     let newCart = [];
 
     for (const [index, item] of cart.entries()) {
         item.cartIndex = index;
         newCart.push(item);
+
+        // Discount for BOGO
         if (item.code === 'CF1') {
             coffee.push(item);
         }
         if (coffee.length === 2) {
             coffee = [];
             newCart.push(specials.BOGO);
+        }
+
+        // Discount for APOM
+        if (oatmealAndApples.length === 0) {
+            if (item.code === 'AP1' || item.code === 'OM1') {
+                oatmealAndApples.push(item);
+            }
+        }
+        if (oatmealAndApples.length === 1) {
+            if (
+                (item.code === 'AP1' && oatmealAndApples[0].code === 'OM1') ||
+                (item.code === 'OM1' && oatmealAndApples[0].code === 'AP1')
+            ) {
+                newCart.push(specials.APOM);
+                oatmealAndApples = [];
+            }
         }
     }
     return newCart;

@@ -51,3 +51,16 @@ test('<App /> should apply BOGO when two coffee items are added', () => {
 
     // debug();
 });
+
+test('<App /> should apply APOM when two Oatmeal and Apples are added', () => {
+    const { debug, getByTestId, container } = render(<App />);
+    const oatmealButton = container.querySelector('#OM1');
+    const appleButton = container.querySelector('#AP1');
+    fireEvent.click(oatmealButton);
+    const total = getByTestId('total');
+    expect(total.textContent).toBe('$3.69');
+    fireEvent.click(appleButton);
+    expect(total.textContent).toBe('$6.69');
+
+    // debug();
+});
