@@ -21,7 +21,8 @@ export const specials = {
 
 export function applySpecials(cart) {
     let coffee = [];
-    let oatmealAndApples = [];
+    let oatmeal = [];
+    let apples = [];
     let newCart = [];
 
     for (const [index, item] of cart.entries()) {
@@ -38,18 +39,19 @@ export function applySpecials(cart) {
         }
 
         // Discount for APOM
-        if (oatmealAndApples.length === 0) {
-            if (item.code === 'AP1' || item.code === 'OM1') {
-                oatmealAndApples.push(item);
-            }
-        }
-        if (oatmealAndApples.length === 1) {
-            if (
-                (item.code === 'AP1' && oatmealAndApples[0].code === 'OM1') ||
-                (item.code === 'OM1' && oatmealAndApples[0].code === 'AP1')
-            ) {
+        if (item.code === 'AP1') {
+            apples.push(item);
+            if (oatmeal.length > 0) {
+                apples.pop();
+                oatmeal.pop();
                 newCart.push(specials.APOM);
-                oatmealAndApples = [];
+            }
+        } else if (item.code === 'OM1') {
+            oatmeal.push(item);
+            if (apples.length > 0) {
+                oatmeal.pop();
+                apples.pop();
+                newCart.push(specials.APOM);
             }
         }
     }

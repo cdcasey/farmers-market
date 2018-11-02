@@ -59,8 +59,11 @@ test('<App /> should apply APOM when two Oatmeal and Apples are added', () => {
     fireEvent.click(oatmealButton);
     const total = getByTestId('total');
     expect(total.textContent).toBe('$3.69');
+    fireEvent.click(oatmealButton);
+    expect(total.textContent).toBe('$7.38');
     fireEvent.click(appleButton);
-    expect(total.textContent).toBe('$6.69');
-
+    expect(total.textContent).toBe('$10.38');
+    fireEvent.click(appleButton);
+    expect(total.textContent).toBe('$13.38');
     // debug();
 });
