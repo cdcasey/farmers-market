@@ -11,7 +11,7 @@ class App extends Component {
         itemsInCart: []
     };
 
-    addToCart(event) {
+    addItemToCart(event) {
         const { id } = event.target;
         this.setState((state) => ({
             itemsInCart: [...state.itemsInCart, inventory[id]]
@@ -22,8 +22,11 @@ class App extends Component {
         return (
             <React.Fragment>
                 <Header cart={this.state.itemsInCart} />
-                <ItemTable add={this.addToCart.bind(this)} />
-                <Cart cart={this.state.itemsInCart} />
+                <ItemTable add={this.addItemToCart.bind(this)} />
+                <Cart
+                    cart={this.state.itemsInCart}
+                    remove={this.removeItemFromCart.bind(this)}
+                />
             </React.Fragment>
         );
     }
