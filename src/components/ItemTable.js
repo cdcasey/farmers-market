@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 
-import AddButton from './AddButton';
+import Button from './Button';
 import { inventory } from '../market';
 
 export default class ItemList extends Component {
@@ -18,9 +18,9 @@ export default class ItemList extends Component {
                     <td className="items__price">${item.price.toFixed(2)}</td>
                     <td>
                         {
-                            <AddButton
+                            <Button
                                 code={item.code}
-                                add={this.props.add}
+                                addOrRemove={this.props.add}
                                 operator="+"
                             />
                         }

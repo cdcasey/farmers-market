@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Button from './Button';
+
 export default class Cart extends Component {
     constructor(props) {
         super(props);
@@ -7,7 +9,9 @@ export default class Cart extends Component {
 
     render() {
         const { cart } = this.props;
+
         if (!cart || cart.length < 1) return <h2>Your cart is empty</h2>;
+
         const items = cart.map((item, i) => {
             return (
                 <tr key={i}>
