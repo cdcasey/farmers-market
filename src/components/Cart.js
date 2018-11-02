@@ -38,20 +38,23 @@ export default class Cart extends Component {
 
         return (
             <React.Fragment>
-                <h2>Cart</h2>
-                <table data-testid="cart">
+                {/* <h2>Cart</h2> */}
+                <table className="cart" data-testid="cart">
                     <thead>
                         <tr>
-                            <th>Item</th>
-                            <th>Price</th>
+                            <th className="cart__item">Item</th>
+                            <th className="cart__price">Price</th>
                             <th />
                         </tr>
                     </thead>
                     <tbody>
                         {items}
-                        <tr>
-                            <td />
-                            <td className="items__price" data-testid="total">
+                        <tr className="total-row">
+                            <td className="total" />
+                            <td
+                                className="items__price total"
+                                data-testid="total"
+                            >
                                 ${total.toFixed(2)}
                             </td>
                             <td />

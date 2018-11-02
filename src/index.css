@@ -24,14 +24,6 @@ header {
     align-items: center;
 }
 
-button {
-    cursor: pointer;
-}
-
-.items__price {
-    text-align: right;
-}
-
 .header__right-nav {
     position: relative;
     margin-right: 1.5rem;
@@ -50,4 +42,44 @@ button {
     position: absolute;
     top: -1rem;
     right: -1.5rem;
+}
+
+button {
+    cursor: pointer;
+}
+
+.container {
+    max-width: 80rem;
+    margin: 3rem auto;
+    background-color: #dfdfdf;
+    padding: 3rem;
+    border-radius: 5px;
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+}
+
+.container__tables {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.items__price {
+    text-align: right;
+}
+
+tr.total-row td.total {
+    border-top: 1px solid black;
+}
+
+.cart {
+    border-collapse: collapse;
+}
+
+.cart__item {
+    text-align: left;
+    width: 10rem;
+}
+
+.cart__price {
+    text-align: right;
 }

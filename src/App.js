@@ -33,12 +33,18 @@ class App extends Component {
     render() {
         return (
             <React.Fragment>
-                <Header cart={this.state.itemsInCart} />
-                <ItemTable add={this.addItemToCart.bind(this)} />
-                <Cart
-                    cart={this.state.itemsInCart}
-                    removeItem={this.removeItemFromCart.bind(this)}
-                />
+                <div class="container">
+                    <Header cart={this.state.itemsInCart} />
+                    <div className="container__tables">
+                        <ItemTable add={this.addItemToCart.bind(this)} />
+                        <div>
+                            <Cart
+                                cart={this.state.itemsInCart}
+                                removeItem={this.removeItemFromCart.bind(this)}
+                            />
+                        </div>
+                    </div>
+                </div>
             </React.Fragment>
         );
     }
