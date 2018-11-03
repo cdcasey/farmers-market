@@ -84,7 +84,7 @@ tr.total-row td.total {
     text-align: right;
 }
 
-@media only screen and (max-width: 56.25em) {
+@media only screen and (max-width: 37.5em) {
     .container__tables {
         flex-direction: column;
         align-items: center;
