@@ -17,7 +17,15 @@ export default class Cart extends Component {
         const items = updatedCart.map((item, i) => {
             return (
                 <tr key={i}>
-                    <td>{item.code}</td>
+                    <td
+                        className={
+                            specials.hasOwnProperty(item.code)
+                                ? 'cart__special'
+                                : 'cart__item'
+                        }
+                    >
+                        {item.code}
+                    </td>
                     <td className="items__price">${item.price.toFixed(2)}</td>
                     <td>
                         {specials.hasOwnProperty(item.code) ? (
@@ -42,8 +50,8 @@ export default class Cart extends Component {
                 <table className="cart" data-testid="cart">
                     <thead>
                         <tr>
-                            <th className="cart__item">Item</th>
-                            <th className="cart__price">Price</th>
+                            <th className="cart__item-header">Item</th>
+                            <th className="cart__price-header">Price</th>
                             <th />
                         </tr>
                     </thead>

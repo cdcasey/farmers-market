@@ -75,13 +75,17 @@ tr.total-row td.total {
     border-collapse: collapse;
 }
 
-.cart__item {
+.cart__item-header {
     text-align: left;
     width: 10rem;
 }
 
-.cart__price {
+.cart__price-header {
     text-align: right;
+}
+
+.cart__special {
+    padding-left: 4rem;
 }
 
 @media only screen and (max-width: 37.5em) {
