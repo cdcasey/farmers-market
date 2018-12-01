@@ -1,4 +1,5 @@
-import itemsInCart, { ADD_ITEM } from './itemsInCart';
+import itemsInCart from './itemsInCart';
+import { ADD_ITEM } from '../actionTypes';
 
 const state = [];
 const action = {
@@ -6,9 +7,11 @@ const action = {
   payload: { id: 'CH1' }
 };
 
-xtest('itemsInCart reducer', () => {
+test('itemsInCart reducer', () => {
   const newState = itemsInCart(state, action);
   console.log(newState);
 
-  expect(false).toBe(true);
+  expect(newState).toEqual([
+    { cartIndex: 0, code: 'CH1', name: 'Chai', price: 3.11 }
+  ]);
 });

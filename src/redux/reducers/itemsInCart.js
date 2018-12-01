@@ -1,14 +1,14 @@
 import { inventory } from '../../market';
+import { ADD_ITEM } from '../actionTypes';
 
 const initialState = [];
 
-export const ADD_ITEM = 'add_item';
-
 export default function itemsInCart(state = initialState, action) {
-  const { id } = action.payload;
   switch (action.type) {
     case ADD_ITEM:
-      return [...state, inventory[id]];
+      const { id } = action.payload;
+      const cartIndex = state.length;
+      return [...state, { ...inventory[id], cartIndex }];
     default:
       return state;
   }
