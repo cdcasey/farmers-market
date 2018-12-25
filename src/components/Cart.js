@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import RemoveButton from './RemoveButton';
 import { specials, applySpecials } from '../market';
+import { removeItemFromCart } from '../redux/actions';
 
 // Items are being added to the store. Now we need to map the store to
 // props so they can be displayed properly. cart for itemsInCart and maybe
@@ -16,7 +17,7 @@ export class Cart extends Component {
   render() {
     console.log(this.props);
 
-    const { cart, removeItem } = this.props;
+    const { cart, removeItemFromCart } = this.props;
 
     if (!cart || cart.length < 1) return <h2>Your cart is empty</h2>;
 
@@ -38,7 +39,10 @@ export class Cart extends Component {
             {specials.hasOwnProperty(item.code) ? (
               ''
             ) : (
-              <RemoveButton remove={removeItem} cartIndex={item.cartIndex} />
+              <RemoveButton
+                remove={removeItemFromCart}
+                cartIndex={item.cartIndex}
+              />
             )}
           </td>
         </tr>
@@ -81,5 +85,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  null
+  { removeItemFromCart }
 )(Cart);

@@ -11,30 +11,6 @@ export function App(props) {
     itemsInCart: []
   };
 
-  // const { addItemToCart } = props;
-
-  // addItemToCart(event) {
-  //   const { id } = event.target;
-  //   this.setState((state) => ({
-  //     itemsInCart: [...state.itemsInCart, inventory[id]]
-  //   }));
-  // }
-
-  function removeItemFromCart(event) {
-    const { cartIndex } = event.target.dataset;
-
-    const itemsInCart = state.itemsInCart.filter(
-      (item, i) => i !== Number(cartIndex)
-    );
-
-    this.setState((state) => ({
-      itemsInCart
-    }));
-  }
-
-  // render() {
-  console.log('PROPS', props);
-
   return (
     <React.Fragment>
       <div className="container">
