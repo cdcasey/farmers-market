@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Header from './components/Header';
+import Header from './components/HeaderContainer';
 import ItemTable from './components/ItemTable';
 import Cart from './components/Cart';
 
@@ -14,12 +14,12 @@ export function App(props) {
   return (
     <React.Fragment>
       <div className="container">
-        <Header cart={state.itemsInCart} />
+        <Header />
         <div className="container__tables">
           {/* <ItemTable add={addItemToCart} /> */}
           <ItemTable />
           <div>
-            <Cart cart={state.itemsInCart} removeItem={removeItemFromCart} />
+            <Cart />
           </div>
         </div>
       </div>
