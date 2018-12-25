@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import RemoveButton from './RemoveButton';
 import { specials, applySpecials } from '../market';
@@ -7,12 +8,14 @@ import { specials, applySpecials } from '../market';
 // props so they can be displayed properly. cart for itemsInCart and maybe
 // ownProps for removeItem, although that will be its own action later.
 
-export default class Cart extends Component {
+export class Cart extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
+    console.log(this.props);
+
     const { cart, removeItem } = this.props;
 
     if (!cart || cart.length < 1) return <h2>Your cart is empty</h2>;
@@ -71,3 +74,12 @@ export default class Cart extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return { cart: state.itemsInCart };
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(Cart);

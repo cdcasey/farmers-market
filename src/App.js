@@ -5,24 +5,25 @@ import ItemTable from './components/ItemTable';
 import Cart from './components/Cart';
 
 import { inventory } from './market';
-// import { addItemToCart } from './redux/actions';
 
-class App extends Component {
-  state = {
+export function App(props) {
+  const state = {
     itemsInCart: []
   };
 
-  addItemToCart(event) {
-    const { id } = event.target;
-    this.setState((state) => ({
-      itemsInCart: [...state.itemsInCart, inventory[id]]
-    }));
-  }
+  // const { addItemToCart } = props;
 
-  removeItemFromCart(event) {
+  // addItemToCart(event) {
+  //   const { id } = event.target;
+  //   this.setState((state) => ({
+  //     itemsInCart: [...state.itemsInCart, inventory[id]]
+  //   }));
+  // }
+
+  function removeItemFromCart(event) {
     const { cartIndex } = event.target.dataset;
 
-    const itemsInCart = this.state.itemsInCart.filter(
+    const itemsInCart = state.itemsInCart.filter(
       (item, i) => i !== Number(cartIndex)
     );
 
@@ -31,24 +32,24 @@ class App extends Component {
     }));
   }
 
-  render() {
-    return (
-      <React.Fragment>
-        <div className="container">
-          <Header cart={this.state.itemsInCart} />
-          <div className="container__tables">
-            <ItemTable add={this.addItemToCart.bind(this)} />
-            <div>
-              <Cart
-                cart={this.state.itemsInCart}
-                removeItem={this.removeItemFromCart.bind(this)}
-              />
-            </div>
+  // render() {
+  console.log('PROPS', props);
+
+  return (
+    <React.Fragment>
+      <div className="container">
+        <Header cart={state.itemsInCart} />
+        <div className="container__tables">
+          {/* <ItemTable add={addItemToCart} /> */}
+          <ItemTable />
+          <div>
+            <Cart cart={state.itemsInCart} removeItem={removeItemFromCart} />
           </div>
         </div>
-      </React.Fragment>
-    );
-  }
+      </div>
+    </React.Fragment>
+  );
+  // }
 }
 
 export default App;

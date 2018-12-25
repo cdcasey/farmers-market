@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { addItemToCart } from '../redux/actions';
 
 function AddButton(props) {
+  console.log('BUTTON PROPS', props);
+
   return (
     <button
       id={props.code}
