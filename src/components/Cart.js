@@ -1,89 +1,64 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import RemoveButton from './RemoveButton';
 import { specials, applySpecials } from '../market';
-import { removeItemFromCart } from '../redux/actions';
 
-// Items are being added to the store. Now we need to map the store to
-// props so they can be displayed properly. cart for itemsInCart and maybe
-// ownProps for removeItem, although that will be its own action later.
+export default function Cart(props) {
+  const { cart, removeItemFromCart } = props;
 
-export class Cart extends Component {
-  constructor(props) {
-    super(props);
-  }
+  if (!cart || cart.length < 1) return <h2>Your cart is empty</h2>;
 
-  render() {
-    console.log(this.props);
-
-    const { cart, removeItemFromCart } = this.props;
-
-    if (!cart || cart.length < 1) return <h2>Your cart is empty</h2>;
-
-    const updatedCart = applySpecials(cart);
-    const items = updatedCart.map((item, i) => {
-      return (
-        <tr key={i}>
-          <td
-            className={
-              specials.hasOwnProperty(item.code)
-                ? 'cart__special'
-                : 'cart__item'
-            }
-          >
-            {item.code}
-          </td>
-          <td className="items__price">${item.price.toFixed(2)}</td>
-          <td>
-            {specials.hasOwnProperty(item.code) ? (
-              ''
-            ) : (
-              <RemoveButton
-                remove={removeItemFromCart}
-                cartIndex={item.cartIndex}
-              />
-            )}
-          </td>
-        </tr>
-      );
-    });
-    const total = updatedCart.reduce((acc, cur) => {
-      return acc + cur.price;
-    }, 0);
-
+  const updatedCart = applySpecials(cart);
+  const items = updatedCart.map((item, i) => {
     return (
-      <React.Fragment>
-        {/* <h2>Cart</h2> */}
-        <table className="cart" data-testid="cart">
-          <thead>
-            <tr>
-              <th className="cart__item-header">Item</th>
-              <th className="cart__price-header">Price</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            {items}
-            <tr className="total-row">
-              <td className="total" />
-              <td className="items__price total" data-testid="total">
-                ${total.toFixed(2)}
-              </td>
-              <td />
-            </tr>
-          </tbody>
-        </table>
-      </React.Fragment>
+      <tr key={i}>
+        <td
+          className={
+            specials.hasOwnProperty(item.code) ? 'cart__special' : 'cart__item'
+          }
+        >
+          {item.code}
+        </td>
+        <td className="items__price">${item.price.toFixed(2)}</td>
+        <td>
+          {specials.hasOwnProperty(item.code) ? (
+            ''
+          ) : (
+            <RemoveButton
+              remove={removeItemFromCart}
+              cartIndex={item.cartIndex}
+            />
+          )}
+        </td>
+      </tr>
     );
-  }
-}
+  });
+  const total = updatedCart.reduce((acc, cur) => {
+    return acc + cur.price;
+  }, 0);
 
-function mapStateToProps(state) {
-  return { cart: state.itemsInCart };
+  return (
+    <React.Fragment>
+      {/* <h2>Cart</h2> */}
+      <table className="cart" data-testid="cart">
+        <thead>
+          <tr>
+            <th className="cart__item-header">Item</th>
+            <th className="cart__price-header">Price</th>
+            <th />
+          </tr>
+        </thead>
+        <tbody>
+          {items}
+          <tr className="total-row">
+            <td className="total" />
+            <td className="items__price total" data-testid="total">
+              ${total.toFixed(2)}
+            </td>
+            <td />
+          </tr>
+        </tbody>
+      </table>
+    </React.Fragment>
+  );
 }
-
-export default connect(
-  mapStateToProps,
-  { removeItemFromCart }
-)(Cart);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Header from './components/HeaderContainer';
 import ItemTable from './components/ItemTable';
-import Cart from './components/Cart';
+import CartContainer from './components/CartContainer';
 
 import { inventory } from './market';
 
@@ -19,7 +19,7 @@ export function App(props) {
           {/* <ItemTable add={addItemToCart} /> */}
           <ItemTable />
           <div>
-            <Cart />
+            <CartContainer />
           </div>
         </div>
       </div>
