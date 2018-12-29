@@ -7,10 +7,12 @@ afterEach(cleanup);
 const onClick = jest.fn();
 
 test('<RemoveButton /> should render and click', () => {
-    const { debug, getByTestId } = render(<RemoveButton remove={onClick} />);
-    const removeButton = getByTestId('remove-button');
+  const { debug, getByTestId } = render(
+    <RemoveButton removeItemFromCart={onClick} />
+  );
+  const removeButton = getByTestId('remove-button');
 
-    fireEvent.click(removeButton);
-    expect(onClick).toHaveBeenCalledTimes(1);
-    // debug();
+  fireEvent.click(removeButton);
+  expect(onClick).toHaveBeenCalledTimes(1);
+  // debug();
 });

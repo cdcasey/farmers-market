@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import RemoveButton from './RemoveButton';
+import RemoveButtonContainer from './RemoveButtonContainer';
 import { specials, applySpecials } from '../market';
 
 export default function Cart(props) {
-  const { cart, removeItemFromCart } = props;
+  const { cart } = props;
 
   if (!cart || cart.length < 1) return <h2>Your cart is empty</h2>;
 
@@ -24,10 +24,7 @@ export default function Cart(props) {
           {specials.hasOwnProperty(item.code) ? (
             ''
           ) : (
-            <RemoveButton
-              remove={removeItemFromCart}
-              cartIndex={item.cartIndex}
-            />
+            <RemoveButtonContainer cartIndex={item.cartIndex} />
           )}
         </td>
       </tr>
