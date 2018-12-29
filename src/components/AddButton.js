@@ -1,10 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
-import { addItemToCart } from '../redux/actions';
-
-function AddButton(props) {
-  console.log('BUTTON PROPS', props);
+export default function AddButton(props) {
+  console.log('BUTTON', props);
 
   return (
     <button
@@ -16,8 +13,3 @@ function AddButton(props) {
     </button>
   );
 }
-
-export default connect(
-  null,
-  { addItemToCart }
-)(AddButton);
