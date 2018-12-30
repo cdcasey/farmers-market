@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import RemoveButtonContainer from './RemoveButtonContainer';
 import { specials, applySpecials } from '../market';
 
 export default function Cart(props) {
@@ -24,7 +23,13 @@ export default function Cart(props) {
           {specials.hasOwnProperty(item.code) ? (
             ''
           ) : (
-            <RemoveButtonContainer cartIndex={item.cartIndex} />
+            <button
+              data-cart-index={item.cartIndex}
+              onClick={props.removeItemFromCart}
+              data-testid="remove-button"
+            >
+              -
+            </button>
           )}
         </td>
       </tr>
