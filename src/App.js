@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Header from './components/HeaderContainer';
-import ItemTable from './components/ItemTable';
+import ItemTableContainer from './components/ItemTableContainer';
 import CartContainer from './components/CartContainer';
 
 import { inventory } from './market';
@@ -16,8 +16,8 @@ export function App(props) {
       <div className="container">
         <Header />
         <div className="container__tables">
-          {/* <ItemTable add={addItemToCart} /> */}
-          <ItemTable />
+          {/* <ItemTableContainer add={addItemToCart} /> */}
+          <ItemTableContainer />
           <div>
             <CartContainer />
           </div>
